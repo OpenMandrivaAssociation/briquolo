@@ -1,6 +1,6 @@
 %define name	briquolo
-%define version 0.5.5
-%define release %mkrel 2
+%define version 0.5.6
+%define release %mkrel 1
 %define Summary	An OpenGL breakout
 
 Name:		%{name}
@@ -8,11 +8,11 @@ Version:	%{version}
 Release:	%{release}
 Summary:	%{Summary}
 Source0:	http://briquolo.free.fr/download/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-0.5.6-desktop-install.patch
+Patch1:		%{name}-0.5.5-desktop-remove-double-category.patch
 Source11:	%{name}-16.png
 Source12:	%{name}-32.png
 Source13:	%{name}-48.png
-Patch0:		briquolo-0.5.5-desktop-file.patch
-Patch1:		briquolo-0.5.5-desktop-remove-double-category.patch
 BuildRequires:	SDL-devel SDL_ttf-devel SDL_mixer1.2-devel dos2unix
 Group:		Games/Arcade
 License:	GPL
@@ -25,13 +25,11 @@ Briquolo is a 3D brick game using OpenGL
 %prep
 %setup -q
 dos2unix data/tableau/old/{001,002,003,006}.tab
-%patch0 -p1 -b .fix_install
+%patch0 -p1 -b .desktop
 %patch1 -p1 -b .remove_category
 
 %build
-aclocal
-automake
-%configure	--bindir=%{_gamesbindir}
+%configure --bindir=%{_gamesbindir}
 %make CXXFLAGS="%{optflags} -Wall -O3 -pipe `sdl-config --cflags` -I./"
 
 %install
@@ -59,10 +57,10 @@ cat > %{buildroot}%{_menudir}/%{name} << EOF
 	xdg="true"
 EOF
 
-desktop-file-install	--vendor="" \
-			--remove-category="Application" \
-			--add-category="X-MandrivaLinux-MoreApplications-Games-Arcade" \
-			--dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/*
+desktop-file-install --vendor="" \
+	--add-category="X-MandrivaLinux-MoreApplications-Games-Arcade" \
+	--dir %{buildroot}%{_datadir}/applications \
+	%{buildroot}%{_datadir}/applications/*
 
 %post
 %{update_menus}
