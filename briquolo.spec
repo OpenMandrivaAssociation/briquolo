@@ -19,6 +19,7 @@ BuildRequires:	SDL_mixer1.2-devel
 BuildRequires:	dos2unix
 BuildRequires:	png-devel
 BuildRequires:	mesaglut-devel
+BuildRequires:	desktop-file-install
 Group:		Games/Arcade
 License:	GPL
 URL:		http://briquolo.free.fr/
