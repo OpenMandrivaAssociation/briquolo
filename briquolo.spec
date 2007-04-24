@@ -18,6 +18,7 @@ BuildRequires:	SDL_ttf-devel
 BuildRequires:	SDL_mixer1.2-devel
 BuildRequires:	dos2unix
 BuildRequires:	png-devel
+BuildRequires:	GL-devel
 Group:		Games/Arcade
 License:	GPL
 URL:		http://briquolo.free.fr/
