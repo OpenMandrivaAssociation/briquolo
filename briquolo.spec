@@ -13,7 +13,11 @@ Patch1:		%{name}-0.5.5-desktop-remove-double-category.patch
 Source11:	%{name}-16.png
 Source12:	%{name}-32.png
 Source13:	%{name}-48.png
-BuildRequires:	SDL-devel SDL_ttf-devel SDL_mixer1.2-devel dos2unix
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_ttf-devel
+BuildRequires:	SDL_mixer1.2-devel
+BuildRequires:	dos2unix
+BuildRequires:	png-devel
 Group:		Games/Arcade
 License:	GPL
 URL:		http://briquolo.free.fr/
