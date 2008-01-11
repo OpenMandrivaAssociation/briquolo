@@ -51,17 +51,6 @@ install -m644 %{SOURCE11} -D %{buildroot}%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D %{buildroot}%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE13} -D %{buildroot}%{_liconsdir}/%{name}.png
 
-install -d %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}): \
-	command="%{_bindir}/%{name}" \
-	needs="x11" \
-	section="More Applications/Games/Arcade" \
-	icon="%{name}.png" \
-	title="Briquolo" \
-	longtitle="%{Summary}" \
-	xdg="true"
-EOF
 
 desktop-file-install --vendor="" \
 	--add-category="X-MandrivaLinux-MoreApplications-Games-Arcade" \
@@ -82,7 +71,6 @@ rm -rf %{buildroot}
 %doc ABOUT-NLS AUTHORS ChangeLog DejaVuSans.ttf-LICENSE README.fr
 %attr(0755,root,games) %{_bindir}/%{name}
 %{_datadir}/%{name}
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
