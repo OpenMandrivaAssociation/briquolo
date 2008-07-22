@@ -1,6 +1,6 @@
 %define name	briquolo
 %define version 0.5.6
-%define release %mkrel 2
+%define release %mkrel 4
 %define Summary	An OpenGL breakout
 
 Name:		%{name}
