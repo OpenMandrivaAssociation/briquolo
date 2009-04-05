@@ -10,6 +10,8 @@ Summary:	%{Summary}
 Source0:	http://briquolo.free.fr/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.6-desktop-install.patch
 Patch1:		%{name}-0.5.5-desktop-remove-double-category.patch
+Patch2:		briquolo-0.5.6-gcc43.patch
+Patch3:		briquolo-0.5.6-fix-icon-install.patch
 Source11:	%{name}-16.png
 Source12:	%{name}-32.png
 Source13:	%{name}-48.png
@@ -33,17 +35,23 @@ Briquolo is a 3D brick game using OpenGL
 dos2unix data/tableau/old/{001,002,003,006}.tab
 %patch0 -p1 -b .desktop
 %patch1 -p1 -b .remove_category
+%patch2 -p0 -b .gcc
+%patch3 -p0 -b .icon
 
 %build
-%configure --bindir=%{_gamesbindir}
-%make CXXFLAGS="%{optflags} -Wall -O3 -pipe `sdl-config --cflags` -I./"
+autoreconf -fi
+%configure2_5x --bindir=%{_gamesbindir} --datadir=%{_gamesdatadir}
+%make
 
 %install
 rm -rf %{buildroot}
-%makeinstall
+%makeinstall_std
 
 #this empty file makes rpmlint shouting otherwise...
-echo %{version} > %{buildroot}%{_datadir}/%{name}/%{version}
+echo %{version} > %{buildroot}%{_gamesdatadir}/%{name}/%{version}
+
+mv %buildroot%_gamesdatadir/locale %buildroot%_datadir
+mv %buildroot%_gamesdatadir/pixmaps %buildroot%_datadir
 
 %find_lang %{name}
 
@@ -51,11 +59,10 @@ install -m644 %{SOURCE11} -D %{buildroot}%{_miconsdir}/%{name}.png
 install -m644 %{SOURCE12} -D %{buildroot}%{_iconsdir}/%{name}.png
 install -m644 %{SOURCE13} -D %{buildroot}%{_liconsdir}/%{name}.png
 
-
-desktop-file-install --vendor="" \
+desktop-file-install --vendor="" --delete-original \
 	--add-category="X-MandrivaLinux-MoreApplications-Games-Arcade" \
 	--dir %{buildroot}%{_datadir}/applications \
-	%{buildroot}%{_datadir}/applications/*
+	%{buildroot}%{_gamesdatadir}/applications/*
 
 %if %mdkversion < 200900
 %post
@@ -73,8 +80,8 @@ rm -rf %{buildroot}
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc ABOUT-NLS AUTHORS ChangeLog DejaVuSans.ttf-LICENSE README.fr
-%attr(0755,root,games) %{_bindir}/%{name}
-%{_datadir}/%{name}
+%attr(0755,root,games) %{_gamesbindir}/%{name}
+%{_gamesdatadir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
