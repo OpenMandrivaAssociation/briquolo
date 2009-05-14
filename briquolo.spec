@@ -22,6 +22,7 @@ BuildRequires:	dos2unix
 BuildRequires:	png-devel
 BuildRequires:	mesaglut-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	gettext-devel
 Group:		Games/Arcade
 License:	GPLv2+
 URL:		http://briquolo.free.fr/
