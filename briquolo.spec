@@ -1,6 +1,6 @@
 %define name	briquolo
-%define version 0.5.6
-%define release %mkrel 4
+%define version 0.5.7
+%define release %mkrel 1
 %define Summary	An OpenGL breakout
 
 Name:		%{name}
@@ -10,7 +10,7 @@ Summary:	%{Summary}
 Source0:	http://briquolo.free.fr/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.6-desktop-install.patch
 Patch1:		%{name}-0.5.5-desktop-remove-double-category.patch
-Patch2:		briquolo-0.5.6-gcc43.patch
+Patch2:		briquolo-0.5.7-gcc43.patch
 Patch3:		briquolo-0.5.6-fix-icon-install.patch
 Source11:	%{name}-16.png
 Source12:	%{name}-32.png
@@ -23,7 +23,7 @@ BuildRequires:	png-devel
 BuildRequires:	mesaglut-devel
 BuildRequires:	desktop-file-utils
 Group:		Games/Arcade
-License:	GPL
+License:	GPLv2+
 URL:		http://briquolo.free.fr/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
