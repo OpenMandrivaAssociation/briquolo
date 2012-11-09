@@ -1,0 +1,8 @@
+--- desktop/Makefile.am~	2009-04-05 16:51:43.000000000 +0200
++++ desktop/Makefile.am	2009-04-05 17:00:15.000000000 +0200
+@@ -1,4 +1,4 @@
+-icondir     = $(DESTDIR)$(datadir)/pixmaps
++icondir     = $(datadir)/pixmaps
+ icon_DATA   = briquolo.svg
+ 
+ # We install the .desktop file and we change the icon directory

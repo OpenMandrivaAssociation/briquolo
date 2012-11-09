@@ -1,0 +1,12 @@
+--- briquolo-0.5.6/desktop/Makefile.am.desktop	2006-03-07 21:31:26.000000000 +0100
++++ briquolo-0.5.6/desktop/Makefile.am	2009-04-05 17:28:30.000000000 +0200
+@@ -3,7 +3,8 @@
+ 
+ # We install the .desktop file and we change the icon directory
+ install-data-local : 
+-	cat briquolo.desktop | sed -e "s#Icon=briquolo.svg#Icon=$(datadir)/pixmaps/briquolo.svg#g" > $(DESTDIR)$(datadir)/applications/briquolo.desktop
++	mkdir -p $(DESTDIR)$(datadir)/applications
++	cat briquolo.desktop | sed -e "s#Icon=briquolo.svg#Icon=$(prefix)/share/pixmaps/briquolo.svg#g" > $(DESTDIR)$(datadir)/applications/briquolo.desktop
+ 
+ uninstall-local :
+ 	rm -f $(DESTDIR)$(datadir)/applications/briquolo.desktop

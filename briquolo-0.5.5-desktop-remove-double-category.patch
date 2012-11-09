@@ -1,0 +1,7 @@
+--- briquolo-0.5.5/desktop/briquolo.desktop~	2006-01-14 15:34:15.000000000 +0100
++++ briquolo-0.5.5/desktop/briquolo.desktop	2006-08-28 00:35:40.000000000 +0200
+@@ -19,4 +19,3 @@ Terminal=false
+ 
+ GenericName=BreakOut
+ GenericName[fr]=Casse Briques
+-Categories=Application;Game;
