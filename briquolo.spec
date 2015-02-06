@@ -1,6 +1,6 @@
 Name:		briquolo
 Version:	0.5.7
-Release:	3
+Release:	4
 Summary:	An OpenGL breakout
 Source0:	http://briquolo.free.fr/download/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-0.5.6-desktop-install.patch
