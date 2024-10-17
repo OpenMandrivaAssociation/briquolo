@@ -21,7 +21,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	gettext-devel
 Group:		Games/Arcade
 License:	GPLv2+
-URL:		http://briquolo.free.fr/
+URL:		https://briquolo.free.fr/
 
 %description
 Briquolo is a 3D brick game using OpenGL
