@@ -11,6 +11,11 @@ Patch4:		briquolo-0.5.7-libpng14.patch
 Source11:	%{name}-16.png
 Source12:	%{name}-32.png
 Source13:	%{name}-48.png
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(sdl)
 BuildRequires:	pkgconfig(SDL_ttf)
 BuildRequires:	SDL_mixer1.2-devel
